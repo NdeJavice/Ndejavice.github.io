@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDE Javice - Cybersecurity Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #06b6d4;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.5);
+            animation: pulse 2s infinite;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: 4rem;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: #9ca3af;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* Contact */
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #d1d5db;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #06b6d4;
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(6, 182, 212, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: rotate(12deg) scale(1.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f3f4f6;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+
+        .skill-card:hover .progress-fill {
+            animation: fillProgress 1s ease-out forwards;
+        }
+
+        @keyframes fillProgress {
+            from { width: 0; }
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: #d1d5db;
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-weight: bold;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .tool-tag {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .tool-tag:hover {
+            transform: scale(1.1);
+            border-color: #06b6d4;
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Background Effects */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 20s infinite;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: #06b6d4;
+            top: 10%;
+            left: 10%;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: #3b82f6;
+            top: 50%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .blob-3 {
+            width: 450px;
+            height: 450px;
+            background: #8b5cf6;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(50px, 50px); }
+            50% { transform: translate(25px, -25px); }
+            75% { transform: translate(-25px, 25px); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="NDE%20Javice%20-%20Cybersecurity%20Portfolio_files/photo.jpeg" alt="NDE Javice" class="profile-photo">
+            <h1>NDE JAVICE</h1>
+            <p class="subtitle">Network Security &amp; Cybersecurity Specialist</p>
+            <p class="description">
+                Protecting digital infrastructure through advanced threat detection, network security architecture,
+                and proactive defense strategies. Dedicated to safeguarding organizations against evolving cyber threats.
+            </p>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact">
+            <a href="mailto:zzuionjavice@gmail.com" class="contact-btn">
+                <span>✉️</span>
+                <span>zzuionjavice@gmail.com</span>
+            </a>
+            <a href="tel:652068799" class="contact-btn">
+                <span>📱</span>
+                <span>652068799</span>
+            </a>
+        </div>
+
+        <!-- Skills -->
+        <h2 class="section-title">⚡ Core Competencies ⚡</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🛡️</div>
+                <h3>Network Security</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+                <ul class="skill-list">
+                    <li>Firewall Configuration</li>
+                    <li>IDS/IPS Management</li>
+                    <li>Network Segmentation</li>
+                    <li>VPN Implementation</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🔒</div>
+                <h3>Threat Detection</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <ul class="skill-list">
+                    <li>SIEM Tools</li>
+                    <li>Log Analysis</li>
+                    <li>Threat Intelligence</li>
+                    <li>Incident Response</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Penetration Testing</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%"></div>
+                </div>
+                <ul class="skill-list">
+                    <li>Vulnerability Assessment</li>
+                    <li>Ethical Hacking</li>
+                    <li>Security Auditing</li>
+                    <li>Exploit Development</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>Infrastructure Security</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 92%"></div>
+                </div>
+                <ul class="skill-list">
+                    <li>Cloud Security</li>
+                    <li>Zero Trust Architecture</li>
+                    <li>Access Control</li>
+                    <li>Network Monitoring</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">👁️</div>
+                <h3>Security Operations</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 88%"></div>
+                </div>
+                <ul class="skill-list">
+                    <li>SOC Management</li>
+                    <li>Security Automation</li>
+                    <li>Malware Analysis</li>
+                    <li>Forensics</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📋</div>
+                <h3>Compliance &amp; Risk</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 87%"></div>
+                </div>
+                <ul class="skill-list">
+                    <li>ISO 27001</li>
+                    <li>GDPR Compliance</li>
+                    <li>Risk Assessment</li>
+                    <li>Security Policies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="tools-section">
+            <h2 class="section-title">Tools &amp; Technologies</h2>
+            <div class="tools-grid">
+                <span class="tool-tag">Wireshark</span>
+                <span class="tool-tag">Metasploit</span>
+                <span class="tool-tag">Nmap</span>
+                <span class="tool-tag">Burp Suite</span>
+                <span class="tool-tag">Splunk</span>
+                <span class="tool-tag">Nessus</span>
+                <span class="tool-tag">Kali Linux</span>
+                <span class="tool-tag">CrowdStrike</span>
+                <span class="tool-tag">Palo Alto</span>
+                <span class="tool-tag">Cisco ASA</span>
+                <span class="tool-tag">Snort</span>
+                <span class="tool-tag">OSSEC</span>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>
